@@ -1,4 +1,3 @@
-# English version
 CLASS AbstractFactory:
     METHOD createProductA() ABSTRACT
     METHOD createProductB() ABSTRACT
