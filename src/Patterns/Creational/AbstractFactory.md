@@ -1,51 +1,59 @@
-INTERFACE ABSTRACT_FACTORY
-    METHOD CREATE_PRODUCT_A() : PRODUCT_A
-    METHOD CREATE_PRODUCT_B() : PRODUCT_B
+# English version
+CLASS AbstractFactory:
+    METHOD createProductA() ABSTRACT
+    METHOD createProductB() ABSTRACT
 
-CLASS CONCRETE_FACTORY_1 IMPLEMENTS ABSTRACT_FACTORY
-    METHOD CREATE_PRODUCT_A() : PRODUCT_A
-        RETURN NEW PRODUCT_A1()
-    METHOD CREATE_PRODUCT_B() : PRODUCT_B
-        RETURN NEW PRODUCT_B1()
+CLASS ConcreteFactory1 IMPLEMENTS AbstractFactory:
 
-CLASS CONCRETE_FACTORY_2 IMPLEMENTS ABSTRACT_FACTORY
-    METHOD CREATE_PRODUCT_A() : PRODUCT_A
-        RETURN NEW PRODUCT_A2()
-    METHOD CREATE_PRODUCT_B() : PRODUCT_B
-        RETURN NEW PRODUCT_B2()
+    METHOD createProductA():
+        RETURN NEW ConcreteProductA1()
+    
+    METHOD createProductB():
+        RETURN NEW ConcreteProductB1()
 
-INTERFACE PRODUCT_A
-    METHOD OPERATION_A()
+CLASS ConcreteFactory2 IMPLEMENTS AbstractFactory:
 
-CLASS PRODUCT_A1 IMPLEMENTS PRODUCT_A
-    METHOD OPERATION_A()
-        PRINT "product a1 ready"
+    METHOD createProductA():
+        RETURN NEW ConcreteProductA2()
+    
+    METHOD createProductB():
+        RETURN NEW ConcreteProductB2()
 
-CLASS PRODUCT_A2 IMPLEMENTS PRODUCT_A
-    METHOD OPERATION_A()
-        PRINT "product a2 ready"
+CLASS AbstractProductA:
+    METHOD operationA() ABSTRACT
 
-INTERFACE PRODUCT_B
-    METHOD OPERATION_B()
+CLASS ConcreteProductA1 IMPLEMENTS AbstractProductA:
 
-CLASS PRODUCT_B1 IMPLEMENTS PRODUCT_B
-    METHOD OPERATION_B()
-        PRINT "product b1 ready"
+    METHOD operationA():
+        PRINT "ConcreteProductA1 operation"
 
-CLASS PRODUCT_B2 IMPLEMENTS PRODUCT_B
-    METHOD OPERATION_B()
-        PRINT "product b2 ready"
+CLASS ConcreteProductA2 IMPLEMENTS AbstractProductA:
 
-CLASS CLIENT
-    VARIABLE factory : ABSTRACT_FACTORY
-    CONSTRUCTOR(f)
-        factory = f
-    METHOD RUN()
-        VARIABLE a = factory.CREATE_PRODUCT_A()
-        VARIABLE b = factory.CREATE_PRODUCT_B()
-        a.OPERATION_A()
-        b.OPERATION_B()
+    METHOD operationA():
+        PRINT "ConcreteProductA2 operation"
 
-// USAGE
-VARIABLE client = NEW CLIENT(NEW CONCRETE_FACTORY_1())
-client.RUN()
+CLASS AbstractProductB:
+    METHOD operationB() ABSTRACT
+
+CLASS ConcreteProductB1 IMPLEMENTS AbstractProductB:
+
+    METHOD operationB():
+        PRINT "ConcreteProductB1 operation"
+
+CLASS ConcreteProductB2 IMPLEMENTS AbstractProductB:
+
+    METHOD operationB():
+        PRINT "ConcreteProductB2 operation"
+
+# Usage
+factory1 = NEW ConcreteFactory1()
+productA1 = factory1.createProductA()
+productB1 = factory1.createProductB()
+productA1.operationA()
+productB1.operationB()
+
+factory2 = NEW ConcreteFactory2()
+productA2 = factory2.createProductA()
+productB2 = factory2.createProductB()
+productA2.operationA()
+productB2.operationB()
