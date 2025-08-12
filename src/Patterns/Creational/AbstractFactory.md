@@ -46,13 +46,22 @@ CLASS ConcreteProductB2 IMPLEMENTS AbstractProductB:
 
 # Usage
 factory1 = NEW ConcreteFactory1()
+
 productA1 = factory1.createProductA()
+
 productB1 = factory1.createProductB()
+
 productA1.operationA()
+
 productB1.operationB()
 
+
 factory2 = NEW ConcreteFactory2()
+
 productA2 = factory2.createProductA()
+
 productB2 = factory2.createProductB()
+
 productA2.operationA()
+
 productB2.operationB()
