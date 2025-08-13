@@ -14,10 +14,15 @@ CLASS UserController:
     METHOD showUser():
         view.displayUserInfo(model.getUserName())
 
-// Usage
+# Usage
+
 user = NEW BasicUser()
+
 view = NEW ConsoleUserView()
+
 controller = NEW UserController(user, view)
 
+
 controller.showUser() 
+
 controller.updateUserName("Alice") 
