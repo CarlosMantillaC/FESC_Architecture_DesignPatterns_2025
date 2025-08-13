@@ -85,7 +85,7 @@ vendingMachine = NEW VendingMachine()
 selectedOption = "4"
 
 DO:
-    PRINT "Selecciona una opción: " + vendingMachine.getStateName() 
+    PRINT "Select an option": " + vendingMachine.getStateName() 
     selectedOption = INPUT("""
         1. Insert money
         2. Choose product
@@ -105,5 +105,5 @@ DO:
             PRINT "Back to system"
         DEFAULT:
             PRINT "Invalid option"
-            
+
 WHILE selectedOption != "4"

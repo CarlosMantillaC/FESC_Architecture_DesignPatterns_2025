@@ -20,7 +20,7 @@ CLASS Duck:
     CONSTRUCTOR(name, strategy: MovementStrategy):
         self.name = name
         self.movementStrategy = strategy
-        PRINT name + " ready to compete" (green text for name, white text for rest)
+        PRINT name + " ready to compete"
 
     METHOD performMove():
         PRINT name + " is getting ready to move..."
